@@ -1,0 +1,59 @@
+{
+	"name": "option-chain-vscode-plugin-sample",
+	"displayName": "option-chain-vscode-plugin-sample",
+	"description": "option-chain-vscode-plugin-sample",
+	"version": "0.0.1",
+	"publisher": "Locking Real",
+	"repository": "https://github.com/LockingReal/option-chain-vscode-plugin-sample.git",
+	"engines": {
+		"vscode": "^1.74.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "transformToOptionalChain",
+				"title": "转换为 可选链形式"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"command": "transformToOptionalChain",
+					"group": "1_modification",
+					"when": "(resourceLangId == javascript || resourceLangId == typescript) && editorHasSelection"
+				}
+			]
+		},
+		"keybindings":[
+			{
+				"command": "transformToOptionalChain",
+				"key": "ctrl+y",
+				"mac":"cmd+y",
+				"when": "(resourceLangId == javascript || resourceLangId == typescript) && editorHasSelection"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "eslint \"src/**/*.ts\"",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/babel__core": "^7.20.1",
+		"@types/node": "^16.18.34",
+		"@types/vscode": "^1.73.0",
+		"@typescript-eslint/eslint-plugin": "^5.42.0",
+		"@typescript-eslint/parser": "^5.42.0",
+		"eslint": "^8.26.0",
+		"typescript": "^5.1.3"
+	},
+	"dependencies": {
+		"@babel/core": "^7.22.9"
+	}
+}
